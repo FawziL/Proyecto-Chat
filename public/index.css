@@ -1,0 +1,59 @@
+h1{
+    color: rgb(0, 30, 255);
+    text-align: center;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 96vh;
+}
+main{
+    background-color: rgba(219, 217, 217, 0.812);
+    min-width: 500px;
+    font-size: 20px;
+    padding: 20px;
+    border-style: solid;
+    margin: auto;    
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#formMessage{
+    margin: 10px;
+}
+input{
+    margin: 5px ;
+    padding: 5px;
+    border-radius: 5px;
+    border-style: none;
+}
+input[type="submit"]{
+    background-color: rgb(78, 193, 78);
+}
+.contenerdMessage{
+    width: 70%;
+    margin: 10px;
+}
+.gris{
+    background-color: rgb(99, 99, 99);
+    opacity: 0.98;
+    border-radius: 8px;
+    padding: 8px;
+    width: fit-content;
+    margin: 10px;
+    padding-right: 65px;
+}
+.gris p{
+    padding: 0px;
+    margin: 0px;
+    color: rgb(235, 234, 234);
+    font-size: 18px;
+}
+.gris h2{
+    font-weight: bold;
+    color: rgb(50, 50, 127);
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+}
