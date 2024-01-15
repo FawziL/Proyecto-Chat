@@ -10,16 +10,16 @@ const getChat = async () => {
         logger.error(`No estás autenticado: ${error}`)}
 }
 
-const getByEmail = async (email) => {
-    return await Chat.getByEmail(email)
+const getByUsername = async (username) => {
+    return await Chat.getByUsername(username)
 }
-const createMessage = async(email, message) => {
+const createMessage = async(username, message) => {
     try {
-        const userMessage = await Chat.create(email, message)
+        const userMessage = await Chat.create(username, message)
         return userMessage
     } catch (error) {
       throw new CustomError(500, error);
     }           
   }
 
-module.exports =  {getChat, getByEmail, createMessage}
+module.exports =  {getChat, getByUsername, createMessage}

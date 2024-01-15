@@ -7,10 +7,10 @@ const messagesPool = document.querySelector('#messagesPool')
 
 function sendMessage() {
   try {
-    const email = usernameInput.value
+    const username = usernameInput.value
     const message = messageInput.value
 
-    socket.emit('client:message', { email, message })
+    socket.emit('client:message', { username, message })
   } catch (error) {
     console.log(`Hubo un error ${error}`)
   }
@@ -26,7 +26,7 @@ function renderMessages(messagesArray) {
       .map(messageInfo => {
         return `<div class="contenerdMessage">
                   <div class="gris">
-                    <h2>${messageInfo.email}</h2>
+                    <h2>${messageInfo.username}</h2>
                     <p>${messageInfo.message}</p>
                   </div>
                 </div>`

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const mesaggeSchema =  new mongoose.Schema({
-    email: { type: String, required: true},
+    username: { type: String, required: true},
     message: { type: String, required: true },
-    type: { type: String, required: true, default: 'Usuario' },
+    type: { type: String, default: 'Usuario' },
     timestamp: {type:Number,required: true}
 })
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/index.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+</head>
+<body>
+    <div class="form"> 
+        <h1>Registro de Usuario</h1>
+        <form id="registerForm" action="/signup" method="post">
+            <p>Ingrese su nombre:</p>
+            <input type="text" name="username" id="registerUser" placeholder="email">
+            <input type="password" name="password" id="passwordUser" placeholder="password">
+            <hr>
+            <input type="text" name="name" placeholder="Nombre">
+            <input type="text" name="age" placeholder="Edad">
+            <input id="phone" type="tel" name="phone" placeholder="Telf">
+            <input id="SignupBtn" type="submit" class="boton" value="Registrarse">   
+        </form>
+        <button id="Login" onclick="goLogin()">Login</button>
+    </div>
+    <script>
+        function redireccionar(pagina) {
+        location.href = pagina;
+        }
+
+        function goLogin() {
+        redireccionar('/login');
+        };
+    </script>
+</body>
+</html>

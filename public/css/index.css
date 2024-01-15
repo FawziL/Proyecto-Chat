@@ -57,3 +57,11 @@ input[type="submit"]{
     padding: 0px;
     margin: 0px;
 }
+.form{
+    background-color: rgba(219, 217, 217, 0.812);
+    width: 350px;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    border-style: solid;
+}

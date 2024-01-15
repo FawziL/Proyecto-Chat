@@ -5,7 +5,6 @@ class ContenedorMongoDbChat {
   constructor() { 
     this.collection = Chat;
 }
-
 async getAll(){
   try {
     const chats = await this.collection.find();
@@ -14,31 +13,26 @@ async getAll(){
     console.log(` ${err}`)
   }
 }
-
-async create(email, message){
+async create(username, message){
   try {
-    const userMessage = new this.collection({email:email, message:message, timestamp:Date.now()})
+    const userMessage = new this.collection({username:username, message:message, timestamp:Date.now()})
     await userMessage.save()
     return userMessage
   } catch (err) {
     console.log(` ${err}`)
   }           
 }
-
-async getByEmail(email) {
+async getByUsername(username) {
   try {
-    const chats = await this.collection.find({ email: email});
+    const chats = await this.collection.find({ username: username});
     return chats
   } catch (err) {
     console.log(` ${err}`)
   }
 }
-
 static getInstance() {
   if (!instance) instance = new ContenedorMongoDbChat();
   return instance;
 }
-
 }
-
 module.exports = ContenedorMongoDbChat;
