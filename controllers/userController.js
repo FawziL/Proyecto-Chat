@@ -1,11 +1,27 @@
 const path = require('path')
 
 const getAcount = async (req, res) => {
-  console.log(req.user)
-  const {username, name, age, phone, avatar} = req.user
-  
-  res.render('userInfo',{username, name, age, phone, avatar})
+  try {
+    console.log(req.user)
+    const {username, name, age, phone, avatar} = req.user
+    res.render('userInfo',{username, name, age, phone, avatar})
+  } catch (error) {
+      res.status(error.errorCode).send(error.message); 
+  }
 };
+const getUser = async (req) => {
+  try {
+    // Verifica que req y req.user estén definidos
+    console.log(req.user)
+    const {username, name, age, phone, avatar} = req.user
+    return username;
+
+  } catch (error) {
+    console.error('Error en getUser:', error);
+    return null; // O manejar el error de alguna otra manera
+  }
+};
+
 const login = async (req, res) => {
   if (req.isAuthenticated()) {
     res.redirect("/account");
@@ -33,7 +49,7 @@ const logout = async (req, res, next) => {
   });
 };
 
-module.exports =  {getAcount, signup, login, failedLogin, failedSignup, logout}
+module.exports =  {getAcount, signup, login, failedLogin, failedSignup, logout, getUser}
 
 
 

@@ -36,7 +36,7 @@ app.use(
     saveUninitialized: false,
     rolling: false,
     cookie: {
-      maxAge: 50000,
+      maxAge: 5000000,
     },
   })
 );
@@ -61,16 +61,35 @@ app.engine(
 app.set('view engine', '.hbs');
 app.set("views", path.join(__dirname, "./public/views"));
 
-
 const server = httpServer.listen(8080, () => {
   console.log(`Servidor escuchando: ${8080}`);
 });
   const {chatService} = require("./services/index.js")
   const {Server: IOServer} = require('socket.io')
   const io = new IOServer(server)
+  const passportSocketIo = require("passport.socketio");
+
+  io.use(passportSocketIo.authorize({
+  cookieParser: cookieParser,
+  key: 'connect.sid',
+  secret: 'chats', // <-- Usa el mismo secret que en tu configuración de sesión
+  store: MongoStore.create({
+    mongoUrl: 'mongodb+srv://FawziL:Zddx1v2hhlB7ux8f@agenda.2xefrlm.mongodb.net/',
+  }),
+  success: onAuthorizeSuccess,
+  fail: onAuthorizeFail,
+}));
 
   io.on('connection', async socket => {
-    console.log(`Se conecto un usuario ${socket.id}`)
+    if (!socket.request.user) {
+      console.log('Intento de conexión no autorizado');
+      return socket.disconnect(true);
+    }
+    const username = socket.request.user.username;
+    console.log('Usuario autenticado:', username);
+
+    socket.emit('server:username', username);
+  
     const messages = await chatService.getChat()
     io.emit('server:message', messages)
   
@@ -82,3 +101,13 @@ const server = httpServer.listen(8080, () => {
       io.emit('server:message', messages)
     })
   })
+
+  function onAuthorizeSuccess(data, accept) {
+    console.log('Autorización exitosa');
+    accept(null, true);
+  }
+  
+  function onAuthorizeFail(data, message, error, accept) {
+    console.error('Error en la autorización:', message);
+    accept(null, false);
+  }

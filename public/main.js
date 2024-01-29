@@ -1,13 +1,17 @@
 const socket = io()
 
 const formMessage = document.querySelector('#formMessage')
-const usernameInput = document.querySelector('#usernameInput')
 const messageInput = document.querySelector('#messageInput')
 const messagesPool = document.querySelector('#messagesPool')
 
+let username;
+
+socket.on('server:username', receivedUsername => {
+  username = receivedUsername;
+});
+
 function sendMessage() {
   try {
-    const username = usernameInput.value
     const message = messageInput.value
 
     socket.emit('client:message', { username, message })

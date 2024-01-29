@@ -1,8 +1,9 @@
 const { Router } = require('express')
 const routes = Router()
-const {getChat, getChatsByUsername} = require("../controllers/chatController.js")
+const {renderChat, getChatsByUsername} = require("../controllers/chatController.js")
+const auth = require("../middlewares/isAuth")
 
-routes.get('/chat', getChat)
-routes.get('/chat/:email', getChatsByUsername)
+routes.get('/chat', auth, renderChat)
+routes.get('/chat/:username', getChatsByUsername)
 
 module.exports = routes;
