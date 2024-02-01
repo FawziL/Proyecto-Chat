@@ -1,4 +1,5 @@
 const { chatService } = require("../services/index.js");
+const path = require("path");
 
 const getChatsByUsername = async (req, res) => {
   try {
@@ -13,8 +14,7 @@ const getChatsByUsername = async (req, res) => {
   }
 };
 const renderChat = async (req, res) => {
-  const chats = await chatService.getChat();
-  res.render("chats", chats);
+  res.sendFile(path.join(__dirname, "../public/pages/chat.html"));
 };
 const getChat = async (req, res) => {
   const chats = await chatService.getChat();

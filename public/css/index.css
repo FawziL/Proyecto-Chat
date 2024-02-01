@@ -1,50 +1,78 @@
+body{
+    background-color: rgb(250, 247, 247);
+}
 h1{
     color: rgb(0, 30, 255);
     text-align: center;
 }
-.main{
+.dFlexCenter{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 96vh;
 }
-main{
+.dFlexCenterForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+}
+.scrollable-container{
     background-color: rgba(219, 217, 217, 0.812);
-    min-width: 500px;
+    min-width: 650px;
     font-size: 20px;
     padding: 20px;
     border-style: solid;
     margin: auto;    
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 5px 5px;
+    overflow: auto;
+    height: 80vh;
+    scroll-margin-bottom: 100px;
 }
 #formMessage{
     margin: 10px;
+    margin-bottom: 0px;
 }
-input{
-    margin: 5px ;
+#formMessage button{
+    border: none;
+    color: transparent;
+    width: 0px;
+    height: 0px;
+    padding: 0px;
+}
+#formMessage button img{
+    width: 50px;
+    height: 54px;
+}
+#formMessage input{
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 25px;
     border-style: none;
+    width: 90%;
+    height: 50px;
 }
-input[type="submit"]{
-    background-color: rgb(78, 193, 78);
+.my-message{
+    width: 100%;
+    margin: 5px 0px 5px;
+    justify-content: end;
+    display: flex;
 }
-.contenerdMessage{
-    width: 70%;
-    margin: 10px;
+.other-message{
+    width: 100%;
+    margin: 5px 0px 5px;
 }
 .gris{
     background-color: rgb(99, 99, 99);
     opacity: 0.98;
-    border-radius: 8px;
     padding: 8px;
     width: fit-content;
-    margin: 10px;
-    padding-right: 65px;
+    margin: 2px;
+    padding-right: 45px;
+    max-width: 70%;
+    border-radius: 10px 0px 10px 10px;
 }
-.gris p{
+.message{
     padding: 0px;
     margin: 0px;
     color: rgb(235, 234, 234);
@@ -52,16 +80,48 @@ input[type="submit"]{
 }
 .gris h2{
     font-weight: bold;
-    color: rgb(50, 50, 127);
+    color: rgb(44, 44, 159);
     font-size: 14px;
     padding: 0px;
     margin: 0px;
 }
-.form{
+.hora{
+    font-size: 10px;
+    color: rgb(57, 57, 81);
+    padding: 0px;
+    margin: 0px;
+    font-weight: bold;
+    margin-left: auto;
+}
+.formSession{
     background-color: rgba(219, 217, 217, 0.812);
     width: 350px;
     font-size: 20px;
     padding: 10px;
     margin: 10px;
-    border-style: solid;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px 0 #333;
+}
+.formSession input{
+    padding: 10px;
+    border-radius: 25px;
+    border-style: none;
+    width: 310px;
+    margin: 5px;
+}
+.formSession input[type="submit"]{
+    width: 330px;
+    background-color: rgb(49, 165, 65);
+}
+.formSession input[type="submit"]:hover{
+    background-color: rgb(37, 130, 49);
+    transition: 1000ms;
+    cursor: pointer;
+}
+.userInfo{
+    text-align: center;
+    box-shadow: 5px 5px 10px 0 #333;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: rgba(219, 217, 217, 0.812);
 }

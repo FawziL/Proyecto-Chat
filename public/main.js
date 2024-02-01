@@ -26,18 +26,33 @@ function renderMessages(messagesArray) {
       return (messagesPool.innerHTML = `<div> No hay mensajes en el chat
        </div>`)
     }
+    
     const html = messagesArray
       .map(messageInfo => {
-        return `<div class="contenerdMessage">
-                  <div class="gris">
+        const isMyMessage = (messageInfo.username === username);
+        const messageClass = isMyMessage ? 'my-message' : 'other-message';
+        const bm = isMyMessage ? 'border-radius: 15px 0px 20px 15px;' : 'border-radius: 0px 15px 15px 20px;';
+
+        const fecha = new Date(messageInfo.timestamp);
+        const horas = fecha.getHours();
+        const minutos = fecha.getMinutes();
+        const horaFormateada = `${horas}:${minutos}`;
+
+        return `<div class="${messageClass}">
+                  <div class="gris" style="${bm}">
                     <h2>${messageInfo.username}</h2>
-                    <p>${messageInfo.message}</p>
+                    <p class="message">${messageInfo.message}</p>
+                    <p class="hora">${horaFormateada}</p>
                   </div>
                 </div>`
       })
       .join(' ')
 
-    messagesPool.innerHTML = html
+    messagesPool.innerHTML = html;
+    const lastMessage = messagesPool.lastElementChild;
+    if (lastMessage) {
+      formMessage.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'end'});
+    }
   } catch (error) {
     console.log(`Hubo un error ${error}`)
   }
